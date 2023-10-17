@@ -2,7 +2,6 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -47,8 +46,6 @@ public class Skier implements Serializable {
 	Set<Registration> registrations;
 
 
-
-
-
-
+	public Skier(String omar, String ouennich, LocalDate now, String ariana) {
+	}
 }
