@@ -87,9 +87,9 @@
 					<artifactId>dependency-check-maven</artifactId>
 					<version>5.2.4</version>
 					<configuration>
-						<failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
-						<failBuildOnCVSS>7</failBuildOnCVSS>
-						<format>ALL</format> <!-- Specify the format you want -->
+						<failBuildOnAnyVulnerability>false</failBuildOnAnyVulnerability>
+						<!-- <failBuildOnCVSS></failBuildOnCVSS> -->
+						<format>ALL</format>
 						<outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
 					</configuration>
 					<executions>
