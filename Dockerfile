@@ -1,7 +1,7 @@
 FROM openjdk:11
 
 # Set the Nexus URL and the artifact path
-ARG NEXUS_URL=http://http://192.168.33.10:8081/repository/maven-releases
+ARG NEXUS_URL=http://192.168.33.10:8081/repository/maven-releases
 ARG ARTIFACT_PATH=tn/esprit/spring/gestion-station-ski/1.0/gestion-station-ski-1.0.jar
 
 # Create a directory to store the downloaded JAR
