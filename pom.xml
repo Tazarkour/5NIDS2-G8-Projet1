@@ -89,6 +89,8 @@
 					<configuration>
 						<failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
 						<failBuildOnCVSS>7</failBuildOnCVSS>
+						<format>ALL</format> <!-- Specify the format you want -->
+						<outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
 					</configuration>
 					<executions>
 						<execution>
