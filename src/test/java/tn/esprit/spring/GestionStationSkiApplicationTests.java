@@ -17,17 +17,24 @@ import java.util.Optional;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class GestionStationSkiApplicationTests {
-@Mock
+	@Mock
 	ISkierRepository iSkierRepository;
-@InjectMocks
+	@InjectMocks
 	SkierServicesImpl skierServices;
-Skier s = new Skier("omar","ouennich", LocalDate.now(),"ariana");
+	Skier s = new Skier("omar", "ouennich", LocalDate.now(), "ariana");
+
 	@Test
-	void contextLoads() {
-	}
-	public void testskier(){
+	@Disabled
+	public void testSkier() {
+		Skier s = new Skier("omar", "ouennich", LocalDate.now(), "ariana");
+
 		Mockito.when(iSkierRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-		Skier user1 = (Skier) skierServices.retrieveAllSkiers();
-		Assertions.assertNotNull(user1);
+		Optional<Skier> user1 = Optional.ofNullable(skierServices.retrieveSkier(Long.valueOf(1))); // Assuming you have a method to retrieve a skier by ID.
+		Assertions.assertTrue(user1.isPresent());
+
+		// Additional assertions for Skier properties if needed
+		Assertions.assertEquals("omar", user1.get().getFirstName());
+		Assertions.assertEquals("ouennich", user1.get().getLastName());
+		Assertions.assertEquals("ariana", user1.get().getCity());
 	}
 }
