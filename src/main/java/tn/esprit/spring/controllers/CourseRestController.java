@@ -29,7 +29,11 @@ public class CourseRestController {
     public List<Course> getAllCourses(){
         return courseServices.retrieveAllCourses();
     }
-
+    @Operation(description = "Retrieve all Courses testing")
+    @GetMapping("/alls")
+    public List<Course> getAllCoursess(){
+        return courseServices.retrieveAllCourses();
+    }
     @Operation(description = "Update Course ")
     @PutMapping("/update")
     public Course updateCourse(@RequestBody Course course){
