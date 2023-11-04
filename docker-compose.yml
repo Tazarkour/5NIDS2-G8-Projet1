@@ -9,7 +9,6 @@ services :
     volumes :
       - db:/var/lib/mysql
   ski-backend :
-    image: tazarkour/gestion-station-ski:latest
     depends_on:
       - mysqldb
     build : ./
