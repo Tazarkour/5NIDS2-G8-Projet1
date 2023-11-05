@@ -6,7 +6,7 @@ ARG ARTIFACT_PATH=tn/esprit/spring/gestion-station-ski/1.0/gestion-station-ski-1
 
 # Create a directory to store the downloaded JAR
 RUN mkdir /app
-
+RUN mkdir /testing
 # Download the JAR from Nexus and copy it into the container
 RUN wget -O /app/gestion-station-ski-1.0.jar $NEXUS_URL/$ARTIFACT_PATH
 
