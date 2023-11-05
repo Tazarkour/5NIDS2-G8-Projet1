@@ -24,7 +24,6 @@ class GestionStationSkiApplicationTests {
 	Skier s = new Skier("omar", "ouennich", LocalDate.now(), "ariana");
 
 	@Test
-	@Disabled
 	public void testSkier() {
 		Skier s = new Skier("omar", "ouennich", LocalDate.now(), "ariana");
 
