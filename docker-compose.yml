@@ -11,7 +11,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    restart: unless-stopped
+
   # Spring Boot application service
   app:
     build:
@@ -25,6 +25,11 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/devops?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-    restart: unless-stopped
+
+
+
+
+
+
 volumes:
   mysql-data:
