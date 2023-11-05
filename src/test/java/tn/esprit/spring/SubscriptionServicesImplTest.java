@@ -17,6 +17,7 @@ import tn.esprit.spring.repositories.ISubscriptionRepository;
 import tn.esprit.spring.services.SubscriptionServicesImpl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -100,20 +101,20 @@ public class SubscriptionServicesImplTest {
         assertThat(subscriptions).isNotNull();
     }
 
- //  @Test
- //  @Disabled
- //  void retrieveSubscriptionsByDatesTest() {
- //      // Mock the behavior of subscriptionRepository.getSubscriptionsByStartDateBetween()
- //      LocalDate startDate = LocalDate.now();
- //      LocalDate endDate = LocalDate.now().plusMonths(1);
- //      when(subscriptionRepository.getSubscriptionsByStartDateBetween(startDate, endDate))
- //              .thenReturn(subscriptionRepository.find);
+    @Test
+    void retrieveSubscriptionsByDatesTest() {
+        // Mock the behavior of subscriptionRepository.getSubscriptionsByStartDateBetween()
+        List<Subscription> subscriptionList = new ArrayList<>();
+        subscriptionList.add(subscription);
 
- //      // Call the method under test
- //      List<Subscription> subscriptions = subscriptionService.retrieveSubscriptionsByDates(startDate, endDate);
+        when(subscriptionRepository.getSubscriptionsByStartDateBetween(LocalDate.now(), LocalDate.now().plusMonths(1)))
+                .thenReturn(subscriptionList);
 
- //      // Assertions
- //      assertThat(subscriptions).isNotNull();
- //      assertThat(subscriptions).hasSize(1);
- //  }
+        // Call the method under test
+        List<Subscription> subscriptions = subscriptionService.retrieveSubscriptionsByDates(LocalDate.now(), LocalDate.now().plusMonths(1));
+
+        // Assertions
+        assertThat(subscriptions).isNotNull();
+        assertThat(subscriptions).hasSize(1);
+    }
 }
