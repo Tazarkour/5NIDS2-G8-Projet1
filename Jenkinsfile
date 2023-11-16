@@ -18,11 +18,29 @@ pipeline {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/omar-ouennich-5nids2-g8']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/Tazarkour/5NIDS2-G8-Projet1.git',
+                        url: 'https://github.com/Omarouennich/5NIDS2-G8-Projet1.git',
                     ]]
                 ])
             }
         }
+        stage('GitGuardian Scan') {
+            steps {
+                script {
+                    // Define your GitGuardian API key or access token
+                    def gitGuardianAPIKey = '5dE45A2Eb00EFA8Ad2aFd0feDdCEa0BdeE1a455D5FBAC1CCb146E353C4eFF00a53762E9'
+
+                    // Define the repository URL
+                    def repositoryURL = 'https://github.com/Omarouennich/5NIDS2-G8-Projet1.git'
+
+                    // Define the command to trigger GitGuardian scan using their API or CLI
+                    def gitGuardianScanCommand = "gitguardian scan -k ${gitGuardianAPIKey} -r ${repositoryURL}"
+
+                    // Execute the GitGuardian scan command
+                    sh gitGuardianScanCommand
+                }
+            }
+        }
+
         stage('Build Maven') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true clean package'
